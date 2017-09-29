@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+</head>
+<body>
+<div class="container">
+    <div class="container">
+        <h1>Welcome to the home page<a href="/add" class="btn btn-success pull-right">Add Movie</a></h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" th:each="movie : ${movies}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" th:text="${movie.title}"></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div th:text="${movie.genre}"></div>
+                        <div th:text="${movie.date}"></div>
+                        <div><a th:href="${movie.link}">More info</a></div>
+                    </div>
+                    <div>
+                        <a class="btn btn-info btn-xs" th:href="@{'/edit/' + ${movie.id}}">Edit Movie</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
